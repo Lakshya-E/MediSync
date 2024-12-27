@@ -1,13 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../../components/constants/routes";
+import { navigateToHome } from "../../store/actions/navigateAction";
 
 const NotFound = () => {
     const navigate = useNavigate();
 
     const handleHomeClick = () => {
-        navigate(routes.ROOT);
-    }
+        navigateToHome(navigate);
+    };
+
     return (
         <div className="not-found__container">
             <div className="img__container">
@@ -25,6 +26,6 @@ const NotFound = () => {
             </div>
         </div>
     )
-}
+};
 
 export default NotFound

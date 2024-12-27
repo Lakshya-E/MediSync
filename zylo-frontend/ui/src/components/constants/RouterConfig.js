@@ -1,6 +1,7 @@
-import Home from "../Pages/Home/Home"
-import Register from "../Pages/Register/Register"
-import NotFound from "../Pages/Not Found/NotFound";
+import Home from "../../Pages/Home/Home"
+import Register from "../../Pages/Register/Register"
+import NotFound from "../../Pages/Not Found/NotFound"
+import Features from "../../Pages/Features/Features"
 
 const routerConfig = {
     common_routes: [
@@ -13,6 +14,7 @@ const routerConfig = {
     //   { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/*", element: <NotFound /> },
+      { path: "/features", element: <Features /> },
     ],
 }
 
