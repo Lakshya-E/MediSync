@@ -1,10 +1,17 @@
 import React from "react";
 import { Button, Form, Input } from 'antd';
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../store/actions/authAction";
+import { navigateToHome } from "../../store/actions/navigateAction";
 
 const Register = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleHomeClick = () => {
+        navigateToHome(navigate);
+    };
 
     const onFinish = (values) => {
         console.log('Success:', values);
@@ -17,6 +24,7 @@ const Register = () => {
     return (
         <>
         <h2>This is a signup page</h2>
+        <button onClick={handleHomeClick}>Home</button>
         <Form
             name="basic"
             labelCol={{
@@ -101,6 +109,6 @@ const Register = () => {
         </Form>
         </>
     )
-}
+};
 
 export default Register
