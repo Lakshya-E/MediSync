@@ -1,9 +1,14 @@
 import React from "react";
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../store/actions/authAction";
 
 const Register = () => {
+    const dispatch = useDispatch();
+
     const onFinish = (values) => {
         console.log('Success:', values);
+        dispatch(registerUser(values))
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -30,6 +35,20 @@ const Register = () => {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
         >
+
+            <Form.Item
+            label="Username"
+            name="username"
+            rules={[
+                {
+                required: false,
+                message: 'Please input your First Name',
+                },
+            ]}
+            >
+                <Input />
+            </Form.Item>
+
             <Form.Item
             label="Email"
             name="email"
@@ -40,33 +59,7 @@ const Register = () => {
                 },
             ]}
             >
-            <Input />
-            </Form.Item>
-
-            <Form.Item
-            label="First Name"
-            name="first_name"
-            rules={[
-                {
-                required: false,
-                message: 'Please input your First Name',
-                },
-            ]}
-            >
-            <Input />
-            </Form.Item>
-
-            <Form.Item
-            label="Last Name"
-            name="last_name"
-            rules={[
-                {
-                required: false,
-                message: 'Please input your Last Name',
-                },
-            ]}
-            >
-            <Input />
+                <Input />
             </Form.Item>
 
             <Form.Item
@@ -79,7 +72,20 @@ const Register = () => {
                 },
             ]}
             >
-            <Input.Password />
+                <Input.Password />
+            </Form.Item>
+
+            <Form.Item
+            label="Confirm Password"
+            name="confirm_password"
+            rules={[
+                {
+                required: true,
+                message: 'Please input your password!',
+                },
+            ]}
+            >
+                <Input.Password />
             </Form.Item>
 
             <Form.Item
@@ -88,9 +94,9 @@ const Register = () => {
                 span: 16,
             }}
             >
-            <Button type="primary" htmlType="submit">
-                SignUp
-            </Button>
+                <Button type="primary" htmlType="submit">
+                    SignUp
+                </Button>
             </Form.Item>
         </Form>
         </>
