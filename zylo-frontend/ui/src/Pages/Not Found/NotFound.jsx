@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../../constants/routes";
+import { routes } from "../../components/constants/routes";
 
 const NotFound = () => {
     const navigate = useNavigate();
