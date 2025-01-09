@@ -1,0 +1,32 @@
+.toast {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  padding-right: 24px;
+  text-align: justify;
+  word-break: normal;
+  .icon-div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+  }
+  .vertical-div {
+    border-radius: 11px;
+    height: 100%;
+    margin-left: -10px;
+  }
+  .message {
+    margin: 15px;
+  }
+  .tittle {
+    color: #565656;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .description {
+    color: #858585;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
