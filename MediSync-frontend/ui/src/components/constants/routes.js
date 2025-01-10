@@ -1,5 +1,6 @@
 export const routes = {
     ROOT: "/",
     REGISTER: "/register",
-    FEATURES: "/features"
+    FEATURES: "/features",
+    LANDING: "/medical-solutions",
 }

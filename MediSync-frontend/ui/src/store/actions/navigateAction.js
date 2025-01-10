@@ -11,3 +11,6 @@ export const navigateToSignUp = (navigate) => {
 export const navigateToFeatures = (navigate) => {
     navigate(routes.FEATURES)
 };
+export const navigateToLanding = (navigate) => {
+    navigate(routes.LANDING)
+};
