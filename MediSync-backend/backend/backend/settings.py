@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'accounts.authentication.SessionTokenAuthentication',  # <-- And here
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
 
@@ -46,7 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'accounts',
-    'zylo_home'
+    'zylo_home',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
