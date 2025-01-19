@@ -1,0 +1,48 @@
+/* App.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
+  
+  .section {
+    flex: 0 0 20%;
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    border: 1px solid #ddd;
+    padding: 20px;
+  }
+  
+  .navbar-section {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .banner-section {
+    background-color: #f4f4f4;
+  }
+  
+  .services-section {
+    background-color: #e2e2ff;
+  }
+  
+  .location-section {
+    background-color: #dff4ff;
+  }
+  
+  .treatments-section {
+    background-color: #d4ffd4;
+  }
+  

@@ -1,16 +1,22 @@
-import React from "react";
+import React from 'react';
+import './LandingPage.scss';
+// Import individual sections
+import Navbar from '../../components/common/Navbar/Navbar';
+import Banner from '../../components/Banner/Banner';
+import Services from '../../components/Services/Services';
+import Location from '../../components/Location/Location';
+import WellnessGuide from '../../components/WellnessGuide/WellnessGuide';
 
 const LandingPage = () => {
-    return (
-        // 1. Navbar
-        // 2. Baner
-        // 3. Services: (Appointment Scheduling, Patience Health Analysis, Test & Labs)
-        // 4. Locations we serve
-        // 5. Feature (Health library)
-        // 6. Footer
-        <></>
+  return (
+    <div className="page-container">
+      <Navbar />
+      <Banner />
+      <Services />
+      <Location />
+      <WellnessGuide />
+    </div>
+  );
+};
 
-    )
-}
-
-export default LandingPage
+export default LandingPage;
