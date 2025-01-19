@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'accounts',
     'zylo_home',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [

@@ -18,8 +18,7 @@ const routerConfig = {
       { path: "/*", element: <NotFound /> },
       { path: "/features", element: <Features /> },
       { path: "/medical-solutions", element: <LandingPage /> },
-      { path: "/disease/:name", element: <DiseaseDetails /> },
-      
+      { path: "/disease/:name", element: <DiseaseDetails /> }, 
     ],
 }
 
