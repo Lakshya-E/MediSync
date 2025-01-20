@@ -25,7 +25,6 @@ export const registerUser = (body) => {
     callback: (respPromise, dispatch, getState) => {
       respPromise
         .then((resp) => {
-          console.log(resp)
           if (resp?.data?.status?.status_type === "SUCCESS") {
             // Assuming the API sends back a token on success
             sessionStorage.setItem("Token", "Token " + resp?.data?.data?.token);

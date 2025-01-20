@@ -17,6 +17,5 @@ export const navigateToLanding = (navigate) => {
 };
 
 export const navigateToWellnessGuide = (navigate, name) => {
-    console.log(`${routes.DISEASE.DISEASE}${name}`)
     navigate(`${routes.DISEASE.DISEASE}${name}`)
 };

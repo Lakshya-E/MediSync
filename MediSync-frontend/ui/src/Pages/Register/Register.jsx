@@ -14,7 +14,6 @@ const Register = () => {
     };
 
     const onFinish = (values) => {
-        console.log('Success:', values);
         dispatch(registerUser(values))
     };
     const onFinishFailed = (errorInfo) => {

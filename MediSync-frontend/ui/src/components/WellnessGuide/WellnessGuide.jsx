@@ -207,7 +207,6 @@ const WellnessGuide = () => {
   const navigate = useNavigate();
 
   const handleDiseaseClick = (name) => {
-    console.log("disease clicked")
     navigateToWellnessGuide(navigate, name)
   }
 
