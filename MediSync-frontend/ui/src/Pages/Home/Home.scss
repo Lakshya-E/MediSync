@@ -8,8 +8,6 @@
     --primary-light-blue: #d3eafc;
     --primary-medium-blue: #4a90e2;
     --primary-navy-blue: #003366;
-    --primary-light-blue: #d3eafc;
-    --primary-light-blue: #d3eafc;
 
     // Secondary Colours
     // whites
@@ -36,20 +34,20 @@
 }
 
 body, html {
-margin: 0;
-padding: 0;
-width: 100%;
-box-sizing: border-box;
-font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: var(--secondary-off-white);
 }
 
 *, *::before, *::after {
-box-sizing: inherit; /* Inherit box sizing */
+    box-sizing: inherit; /* Inherit box sizing */
 }
 
 .page-container {
-box-sizing: border-box;
-width: 100%;
-scroll-snap-type: y mandatory;
+    width: 100%;
+    scroll-snap-type: y mandatory;
 }
   

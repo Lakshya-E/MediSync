@@ -1,7 +1,9 @@
 import React from 'react';
 import { Collapse, Typography } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+// import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { useNavigate } from "react-router-dom";
+import { navigateToWellnessGuide } from '../../store/actions/navigateAction';
 import './WellnessGuide.scss';
 
 const { Panel } = Collapse;
@@ -202,6 +204,13 @@ export const diseases = [
 ];
 
 const WellnessGuide = () => {
+  const navigate = useNavigate();
+
+  const handleDiseaseClick = (name) => {
+    console.log("disease clicked")
+    navigateToWellnessGuide(navigate, name)
+  }
+
   return (
     <div className="wellness-guide">
       <Text className="wellness-guide-title">Wellness Guide</Text>
@@ -212,7 +221,11 @@ const WellnessGuide = () => {
       >
         {diseases.map((disease, index) => (
           <Panel
-            header={<Link to={{ pathname: `/disease/${disease.name}`, state: { disease } }}>{disease.name}</Link>}
+            header={
+              <span onClick={() => handleDiseaseClick(disease.name)}>
+                {disease.name}
+              </span>
+            }
             key={index}
           >
             {/* Disease details will be passed via the Link state */}
@@ -224,5 +237,3 @@ const WellnessGuide = () => {
 };
 
 export default WellnessGuide;
-
-

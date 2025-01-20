@@ -4,11 +4,14 @@ import './App.css';
 import routerConfig from './components/constants/RouterConfig';
 
 function App() {
-  let route = [];
-  let common_routes = routerConfig?.common_routes;
+  const { common_routes, landing_page_routes } = routerConfig;
 
-  route = route.concat(common_routes);
-  const hashRouter = createHashRouter(route);
+  const routes = [
+    ...common_routes,
+    ...landing_page_routes,
+  ];
+
+  const hashRouter = createHashRouter(routes);
 
   return (
     <>
