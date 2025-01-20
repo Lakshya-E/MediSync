@@ -1,4 +1,4 @@
-import { routes } from "../../components/constants/routes";
+import { routes } from "../../constants/routes";
 
 export const navigateToHome = (navigate) => {
     navigate(routes.ROOT)

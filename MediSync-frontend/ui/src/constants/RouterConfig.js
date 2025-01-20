@@ -1,8 +1,8 @@
-import Home from "../../Pages/Home/Home"
-import Register from "../../Pages/Register/Register"
-import NotFound from "../../Pages/Not Found/NotFound"
-import AboutUs from "../../Pages/AboutUs/AboutUs"
-import DiseaseDetails from "../DiseaseDetails/DiseaseDetails"
+import Home from "../Pages/Home/Home"
+import Register from "../Pages/Register/Register"
+import NotFound from "../Pages/Not Found/NotFound"
+import AboutUs from "../Pages/AboutUs/AboutUs"
+import DiseaseDetails from "../components/DiseaseDetails/DiseaseDetails"
 import { routes } from "./routes"
 
 const routerConfig = {
