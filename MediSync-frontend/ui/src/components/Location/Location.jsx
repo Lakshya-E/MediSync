@@ -1,5 +1,6 @@
 // components/Location.js
 import React from 'react';
+import './Location.scss'
 
 const Location = () => {
   return (

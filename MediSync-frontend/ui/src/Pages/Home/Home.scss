@@ -1,0 +1,55 @@
+:root {
+    // Primary Colours
+    // greens
+    --primary-teal: #17a2b8;
+    --primary-soft-green: #d4edda;
+    --primary-medium-green: #28a745;
+    // blues
+    --primary-light-blue: #d3eafc;
+    --primary-medium-blue: #4a90e2;
+    --primary-navy-blue: #003366;
+    --primary-light-blue: #d3eafc;
+    --primary-light-blue: #d3eafc;
+
+    // Secondary Colours
+    // whites
+    --secondary-pure-white: #ffffff;
+    --secondary-off-white: #f8f9fa;
+    // reds - for emergency or alert messages
+    --secondary-soft-red: #f8d7da;
+    --secondary-medium-red: #dc3545;
+
+    // Neutral Tones
+    // grays
+    --neutral-gray: #ced4da;
+    --neutral-medium-gray: #6c757d;
+    --neutral-dark-gray: #343a40;
+    // others
+    --neutral-light-neutral: #e9ecef;
+    --neutral-beige: #f5f5f0;
+  
+    // Font
+    --font-size-small: 0.7rem;
+    --font-size-medium: 1rem;
+    --font-size-large: 1.4rem;
+    --font-size-extra-large: 2rem;
+}
+
+body, html {
+margin: 0;
+padding: 0;
+width: 100%;
+box-sizing: border-box;
+font-family: Arial, sans-serif;
+}
+
+*, *::before, *::after {
+box-sizing: inherit; /* Inherit box sizing */
+}
+
+.page-container {
+box-sizing: border-box;
+width: 100%;
+scroll-snap-type: y mandatory;
+}
+  

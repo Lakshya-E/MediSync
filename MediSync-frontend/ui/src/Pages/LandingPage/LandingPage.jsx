@@ -9,8 +9,7 @@ import WellnessGuide from '../../components/WellnessGuide/WellnessGuide';
 
 const LandingPage = () => {
   return (
-    <div className="page-container">
-      <Navbar />
+    <div className="landing-page-container">
       <Banner />
       <Services />
       <Location />

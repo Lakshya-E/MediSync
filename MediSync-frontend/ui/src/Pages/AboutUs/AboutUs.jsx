@@ -1,17 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { navigateToHome } from "../../store/actions/navigateAction";
+import Navbar from "../../components/common/Navbar/Navbar";
+import Footer from "../../components/common/Footer/Footer";
 
-const Features = () => {
-    const navigate = useNavigate();
-
-    const handleHomeClick = () => {
-        navigateToHome(navigate)
-    };
-
+const AboutUs = () => {
     return (
         <>
-        <h2>This is Zylo Features Page</h2>
+        <Navbar />
+        <h2>This is Medisync About Us Page</h2>
         <p>List of all the features</p>
 
         <h4>User Management: (Features given to users)</h4>
@@ -33,10 +28,9 @@ const Features = () => {
             <ol>Medicinal Information</ol>
             <ol>Personal Well Being</ol>
         </ul>
-
-        <button onClick={handleHomeClick}>Home</button>
+        <Footer />
         </>
     )
 };
 
-export default Features
+export default AboutUs

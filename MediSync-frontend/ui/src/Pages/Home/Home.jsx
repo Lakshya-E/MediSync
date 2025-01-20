@@ -1,26 +1,18 @@
 import React from "react";
+import './Home.scss'
 import { useNavigate } from "react-router-dom";
-import { 
-    navigateToSignUp,
-    navigateToFeatures
-} from "../../store/actions/navigateAction";
+import Navbar from "../../components/common/Navbar/Navbar";
+import LandingPage from "../LandingPage/LandingPage";
+import Footer from "../../components/common/Footer/Footer";
 
 const Home = () => {
     const navigate = useNavigate();
-
-    const handleSignUpClick = () => {
-        navigateToSignUp(navigate);
-    };
-
-    const handleFeatureClick = () => {
-        navigateToFeatures(navigate);
-    };
-
     return (
-        <>
-        <button onClick={handleSignUpClick}>Sign Up</button>
-        <button onClick={handleFeatureClick}>Features Page</button>
-        </>
+        <div className="page-container">
+            <Navbar />
+            <LandingPage />
+            <Footer />
+        </div>
     )
 };
 

@@ -8,9 +8,10 @@ export const navigateToSignUp = (navigate) => {
     navigate(routes.REGISTER)
 };
 
-export const navigateToFeatures = (navigate) => {
-    navigate(routes.FEATURES)
+export const navigateToAboutUs = (navigate) => {
+    navigate(routes.ABOUTUS)
 };
+
 export const navigateToLanding = (navigate) => {
     navigate(routes.LANDING)
 };
