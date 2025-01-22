@@ -1,0 +1,232 @@
+[
+    {
+        "model": "provided_services.disease",  
+        "pk": 1,
+        "fields": {
+            "name": "Dengue Fever",
+            "premedication": [
+                "No specific antiviral medication for dengue; focus on symptom relief."
+            ],
+            "treatment_plan": [
+                "Paracetamol (to manage fever and pain; avoid NSAIDs like aspirin or ibuprofen as they increase bleeding risk).",
+                "Stay hydrated (IV fluids if needed for severe cases).",
+                "Monitor for warning signs of dengue hemorrhagic fever."
+            ],
+            "diet_plan": [
+                "Papaya leaves juice (may improve platelet count).",
+                "Hydration with water, ORS, and coconut water.",
+                "Foods rich in vitamins and antioxidants (kiwi, oranges)."
+            ],
+            "not_to_eat": [
+                "Oily, fried, and spicy foods (hard on the stomach).",
+                "Caffeine (can worsen dehydration)."
+            ]
+        }
+    },
+    {
+        "model": "provided_services.disease",
+        "pk": 2,
+        "fields": {
+            "name": "Malaria",
+            "premedication": [
+                "Chloroquine (for chloroquine-sensitive strains).",
+                "Artemisinin-based combination therapies (ACTs) for resistant strains."
+            ],
+            "treatment_plan": [
+                "Antimalarial drugs as prescribed.",
+                "Regular blood tests to monitor parasitic load."
+            ],
+            "diet_plan": [
+                "High-calorie foods (bananas, rice, potatoes) for energy.",
+                "Iron-rich foods (spinach, red meat) to combat anemia caused by malaria."
+            ],
+            "not_to_eat": [
+                "Alcohol (can strain the liver, already affected by malaria).",
+                "Heavy, greasy foods (difficult to digest)."
+            ]
+        }
+    },
+    {
+        "model": "provided_services.disease",
+        "pk": 3,
+        "fields": {
+            "name": "Diarrhea",
+            "premedication": [
+                "ORS (Oral Rehydration Salts) to prevent dehydration.",
+                "Zinc supplements (reduces severity and duration).",
+                "Loperamide (only if diarrhea is non-infectious and persistent)."
+            ],
+            "treatment_plan": [
+                "Stay hydrated with water, ORS, or clear broths.",
+                "Identify and treat the cause (e.g., bacterial infections may require antibiotics)."
+            ],
+            "diet_plan": [
+                "BRAT diet (Bananas, Rice, Applesauce, Toast).",
+                "Light soups and probiotics (yogurt)."
+            ],
+            "not_to_eat": [
+                "Dairy products (except yogurt; may worsen symptoms).",
+                "High-fiber and greasy foods."
+            ]
+        }
+    },
+    {
+        "model": "provided_services.disease",
+        "pk": 4,
+        "fields": {
+            "name": "Common Cold and Flu",
+            "premedication": [
+                "Antihistamines (e.g., Cetirizine).",
+                "Decongestants (e.g., Pseudoephedrine).",
+                "Paracetamol/Ibuprofen (for fever and aches)."
+            ],
+            "treatment_plan": [
+                "Rest and hydration.",
+                "Steam inhalation to relieve congestion."
+            ],
+            "diet_plan": [
+                "Warm soups (chicken soup helps reduce inflammation).",
+                "Vitamin C-rich foods (citrus fruits, strawberries).",
+                "Ginger and honey (for sore throat relief)."
+            ],
+            "not_to_eat": [
+                "Sugary foods (can suppress immune function).",
+                "Dairy if it increases mucus production in some individuals."
+            ]
+        }
+    },
+    {
+        "model": "provided_services.disease",
+        "pk": 5,
+        "fields": {
+            "name": "Typhoid Fever",
+            "premedication": [
+                "Antibiotics (e.g., Ceftriaxone or Ciprofloxacin)."
+            ],
+            "treatment_plan": [
+                "Bed rest and hydration.",
+                "Monitor for complications (intestinal perforation)."
+            ],
+            "diet_plan": [
+                "Easily digestible foods (porridge, boiled potatoes).",
+                "Hydrating fluids (coconut water, soups)."
+            ],
+            "not_to_eat": [
+                "Raw vegetables or unpeeled fruits (risk of contamination).",
+                "Spicy and greasy foods (hard on the digestive system)."
+            ]
+        }
+    },
+    {
+        "model": "provided_services.disease",  
+        "pk": 6,
+        "fields": {
+            "name": "Cholera",
+            "premedication": [
+                "ORS to replace lost fluids and electrolytes.",
+                "Antibiotics like Azithromycin in severe cases."
+            ],
+            "treatment_plan": [
+                "Aggressive rehydration therapy.",
+                "Zinc supplements for children."
+            ],
+            "diet_plan": [
+                "Soft, easily digestible foods (rice porridge, boiled potatoes).",
+                "Fluids with electrolytes (coconut water, ORS)."
+            ],
+            "not_to_eat": [
+                "Raw or undercooked seafood.",
+                "Spicy, fried, and high-fiber foods."
+            ]
+        }
+    },
+    {
+        "model": "provided_services.disease",
+        "pk": 7,
+        "fields": {
+            "name": "Tuberculosis (TB)",
+            "premedication": [
+                "First-line TB drugs: Rifampin, Isoniazid, Pyrazinamide, Ethambutol."
+            ],
+            "treatment_plan": [
+                "Strict adherence to a 6-month or longer treatment plan.",
+                "Monitor liver function (some drugs are hepatotoxic)."
+            ],
+            "diet_plan": [
+                "High-protein foods (eggs, lean meat, legumes).",
+                "Foods rich in Vitamin C and E (oranges, almonds)."
+            ],
+            "not_to_eat": [
+                "Alcohol (interferes with medication and strains the liver).",
+                "High-fat foods (affects drug absorption)."
+            ]
+        }
+    },
+    {
+        "model": "provided_services.disease",
+        "pk": 8,
+        "fields": {
+            "name": "Jaundice",
+            "premedication": [
+                "No specific medication; treat underlying cause (e.g., antiviral for hepatitis)."
+            ],
+            "treatment_plan": [
+                "Rest and proper hydration.",
+                "Monitor liver function tests."
+            ],
+            "diet_plan": [
+                "Liver-friendly foods (carrots, beets).",
+                "Fluids like sugarcane juice and coconut water."
+            ],
+            "not_to_eat": [
+                "Alcohol and fatty foods.",
+                "Processed and fried foods."
+            ]
+        }
+    },
+    {
+        "model": "provided_services.disease",
+        "pk": 9,
+        "fields": {
+            "name": "Chickenpox",
+            "premedication": [
+                "Antihistamines (e.g., Diphenhydramine) for itching."
+            ],
+            "treatment_plan": [
+                "Calamine lotion for skin relief.",
+                "Rest and hydration."
+            ],
+            "diet_plan": [
+                "Soft foods (soup, rice, oatmeal).",
+                "Hydrating fluids (fruit juices, water)."
+            ],
+            "not_to_eat": [
+                "Spicy, acidic, or salty foods (can irritate mouth sores).",
+                "Fried and oily foods."
+            ]
+        }
+    },
+    {
+        "model": "provided_services.disease",
+        "pk": 10,
+        "fields": {
+            "name": "Pneumonia",
+            "premedication": [
+                "Antibiotics (e.g., Amoxicillin, Azithromycin) if bacterial.",
+                "Antiviral drugs if caused by viruses."
+            ],
+            "treatment_plan": [
+                "Rest and breathing exercises.",
+                "Use of humidifiers to ease breathing."
+            ],
+            "diet_plan": [
+                "Warm soups and broths.",
+                "Foods rich in antioxidants (berries, spinach)."
+            ],
+            "not_to_eat": [
+                "Cold drinks (may worsen coughing).",
+                "Processed and sugary foods."
+            ]
+        }
+    }
+]
