@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from accounts.views.signup import SignupView
-from accounts.views.patient_view import PatientLoginView, CreatePatientView,GenerateTokenView
+from accounts.views.patient_view import PatientLoginView,GenerateTokenView
 from provided_services.views.diseases_views import DiseaseViewSet
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from provided_services.routers import router
+from accounts.routers import prouter
 from rest_framework.permissions import AllowAny
 
 
@@ -70,7 +71,8 @@ urlpatterns = [
         cache_timeout=0), name="schema-redoc"),
     path('api/login/',GenerateTokenView.as_view(),name='login'),
     path('api/user/register/', SignupView.as_view(), name='register-user'),
-    path('api/patient/register/', CreatePatientView.as_view(), name='register'),
+    # path('api/patient/register/', CreatePatientView.as_view(), name='register'),
     path('api/patient/login/', PatientLoginView.as_view(), name='login'),
     path('api/', include(router.urls)),
+    path('api/',include(prouter.urls)),
 ]
