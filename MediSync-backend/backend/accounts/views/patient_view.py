@@ -1,4 +1,4 @@
-from rest_framework import status, generics
+from rest_framework import status, generics,viewsets
 from utils.responses import Response
 from drf_yasg import openapi
 from rest_framework.views import APIView
@@ -8,6 +8,7 @@ from drf_yasg.utils import swagger_auto_schema
 from ..serializers.patient_serializer import PatientSerializer, LoginSerializer
 from django.contrib.auth import authenticate, login
 from rest_framework.permissions import IsAdminUser,AllowAny
+from ..models.user_model import User
 
 
 
@@ -80,35 +81,122 @@ class GenerateTokenView(APIView):
             status.HTTP_401_UNAUTHORIZED, {'error': 'Invalid username or password'}
         )
 
-class CreatePatientView(generics.CreateAPIView):
+class PatientViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.filter(user_type='patient')
     serializer_class = PatientSerializer
 
+    @csrf_exempt
     @swagger_auto_schema(
-        operation_description="Sign up a new patient",
+        operation_description="Retrieve a list of patients",
+        responses={
+            200: openapi.Response("List of patients retrieved successfully", PatientSerializer(many=True)),
+            400: "Invalid request"
+        },
+    )
+    def list(self, request, *args, **kwargs):
+        try:
+            patients = self.queryset
+            serializer = self.get_serializer(patients, many=True)
+            return Response.construct_success_response(
+                status.HTTP_200_OK, {"message": "List of patients retrieved successfully", "data": serializer.data}
+            )
+        except Exception as e:
+            return Response.construct_error_response(
+                status.HTTP_400_BAD_REQUEST,{"error": str(e)}
+            )
+    @csrf_exempt
+    @swagger_auto_schema(
+        operation_description="Retrieve a specific patient by ID",
+        responses={
+            200: openapi.Response("Patient retrieved successfully", PatientSerializer),
+            404: "Patient not found"
+        },
+    )
+    def retrieve(self, request, *args, **kwargs):
+        try:
+            patient = self.get_object()
+            serializer = self.get_serializer(patient)
+            return Response.construct_success_response(
+                status.HTTP_200_OK, {"message": "Patient retrieved successfully", "data": serializer.data}
+            )
+        except Exception as e:
+            return Response.construct_error_response(
+                status.HTTP_404_NOT_FOUND,{"error": str(e)}
+            )
+    @csrf_exempt
+    @swagger_auto_schema(
+        operation_description="Create a new patient",
         request_body=PatientSerializer,
         responses={
             201: openapi.Response("Patient created successfully", PatientSerializer),
-            400: "Invalid data provided",
+            400: "Invalid data provided"
         },
     )
-    def create(self, request):
+    def create(self, request, *args, **kwargs):
         try:
             data = request.data.copy()
             data['user_type'] = 'patient'
 
-            serializer = PatientSerializer(data=request.data)
+            serializer = self.get_serializer(data=data)
             if serializer.is_valid():
                 serializer.save()
                 return Response.construct_success_response(
-                    status.HTTP_201_CREATED, 
-                    {"message": "Patient created successfully", "data": serializer.data}
+                   status.HTTP_201_CREATED,
+                    {"message": "Patient created successfully", "data": serializer.data},
                 )
             return Response.construct_error_response(
-                status.HTTP_400_BAD_REQUEST, 
-                serializer.errors
+            status.HTTP_400_BAD_REQUEST,{"errors": serializer.errors}
             )
         except Exception as e:
-            return Response.construct_error_response(status.HTTP_400_BAD_REQUEST, str(e))
+            return Response.construct_error_response(
+                status.HTTP_400_BAD_REQUEST,{"error": str(e)}
+            )
+    @csrf_exempt
+    @swagger_auto_schema(
+        operation_description="Update a patient's details",
+        request_body=PatientSerializer,
+        responses={
+            200: openapi.Response("Patient updated successfully", PatientSerializer),
+            400: "Invalid data provided",
+            404: "Patient not found"
+        },
+    )
+    def update(self, request, *args, **kwargs):
+        try:
+            partial = kwargs.pop('partial', False)
+            instance = self.get_object()
+            serializer = self.get_serializer(instance, data=request.data, partial=partial)
+            if serializer.is_valid():
+                serializer.save()
+                return Response.construct_success_response(
+                    status.HTTP_200_OK, {"message": "Patient updated successfully", "data": serializer.data}
+                )
+            return Response.construct_error_response(
+                status.HTTP_400_BAD_REQUEST, {"errors": serializer.errors}
+            )
+        except Exception as e:
+            return Response.construct_error_response(
+                status.HTTP_404_NOT_FOUND,{"error": str(e)}
+            )
+    @csrf_exempt
+    @swagger_auto_schema(
+        operation_description="Delete a patient",
+        responses={
+            204: "Patient deleted successfully",
+            404: "Patient not found"
+        },
+    )
+    def destroy(self, request, *args, **kwargs):
+        try:
+            patient = self.get_object()
+            patient.delete()
+            return Response.construct_success_response(
+                status.HTTP_204_NO_CONTENT, {"message": "Patient deleted successfully"}
+            )
+        except Exception as e:
+            return Response.construct_error_response(
+             status.HTTP_404_NOT_FOUND, {"error": str(e)}
+            )
 
 
 class PatientLoginView(APIView):
