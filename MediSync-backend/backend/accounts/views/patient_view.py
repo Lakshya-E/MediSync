@@ -2,10 +2,83 @@ from rest_framework import status, generics
 from utils.responses import Response
 from drf_yasg import openapi
 from rest_framework.views import APIView
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from drf_yasg.utils import swagger_auto_schema
 from ..serializers.patient_serializer import PatientSerializer, LoginSerializer
+from django.contrib.auth import authenticate, login
+from rest_framework.permissions import IsAdminUser,AllowAny
 
+
+
+class GenerateTokenView(APIView):
+    permission_classes = [AllowAny]  # Allow unauthenticated access
+
+    # Swagger schema for API documentation
+    @csrf_exempt
+    @swagger_auto_schema(
+        operation_description="Generate a token for the authenticated user",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'username': openapi.Schema(
+                    type=openapi.TYPE_STRING,
+                    description='The username of the user',
+                    example='testuser'
+                ),
+                'password': openapi.Schema(
+                    type=openapi.TYPE_STRING,
+                    description='The password of the user',
+                    example='password123'
+                ),
+            },
+            required=['username', 'password']
+        ),
+        responses={
+            200: openapi.Response(
+                description="Token generated successfully",
+                schema=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties={
+                        'token': openapi.Schema(
+                            type=openapi.TYPE_STRING,
+                            description="The authentication token",
+                            example="abcdef1234567890"
+                        )
+                    }
+                )
+            ),
+            401: openapi.Response(
+                description="Invalid credentials",
+                schema=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties={
+                        'error': openapi.Schema(
+                            type=openapi.TYPE_STRING,
+                            description="Error message",
+                            example="Invalid username or password"
+                        )
+                    }
+                )
+            )
+        }
+    )
+    def post(self, request):
+        # Authenticate the user based on username and password
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        # Authenticate user using Django's authenticate method
+        user = authenticate(username=username, password=password)
+        if user:
+            # Generate or retrieve the token for the authenticated user
+            token, created = Token.objects.get_or_create(user=user)
+            return Response.construct_success_response(status.HTTP_200_OK,{'token': token.key})
+
+        # Invalid credentials
+        return Response.construct_error_response(
+            status.HTTP_401_UNAUTHORIZED, {'error': 'Invalid username or password'}
+        )
 
 class CreatePatientView(generics.CreateAPIView):
     serializer_class = PatientSerializer

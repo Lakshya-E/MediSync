@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 from datetime import timedelta
 from pathlib import Path
+from drf_yasg import openapi
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +33,13 @@ ALLOWED_HOSTS = []
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',  # For session-based auth
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # Restrict access by default
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'accounts.authentication.SessionTokenAuthentication',  # <-- And here
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
@@ -45,12 +53,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
     'drf_yasg',
     'accounts',
     'zylo_home',
     'provided_services',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -162,3 +171,19 @@ CORS_ALLOW_METHODS = [
     "POST",
     "PUT",
 ]
+# Configure session settings (optional)
+SESSION_COOKIE_AGE = 3600  # Session lifetime in seconds
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization',
+            'description': "Token-based authentication using the `Token <your_token>` format",
+        },
+    },
+    'USE_SESSION_AUTH': False,  # Disable session authentication for Swagger UI
+    'DEFAULT_INFO': 'my_project.urls.schema_view',  # Replace with your schema_view path
+}
